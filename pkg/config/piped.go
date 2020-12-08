@@ -440,8 +440,16 @@ type ImageProviderDockerhubConfig struct {
 }
 
 type ImageProviderECRConfig struct {
-	Address   string `json:"address"`
-	TokenFile string `json:"tokenFile"`
+	// The AWS account ID associated with the registry that contains the repository
+	// in which to list images. If you do not specify a registry, the default registry
+	// is assumed.
+	RegistryId string `json:"registryId"`
+	// Path to the shared credentials file.
+	CredentialsFile string `json:"credentialsFile"`
+	// AWS Profile to extract credentials from the shared credentials file.
+	// If empty, the environment variable "AWS_PROFILE" is used.
+	// "default" is populated if the environment variable is also not set.
+	Profile string `json:"profile"`
 }
 
 type Notifications struct {
